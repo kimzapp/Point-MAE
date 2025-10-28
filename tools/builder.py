@@ -40,7 +40,7 @@ def build_opti_sche(base_model, config):
         def add_weight_decay(model, weight_decay=1e-5, skip_list=()):
             decay = []
             no_decay = []
-            for name, param in model.module.named_parameters():
+            for name, param in model.named_parameters():
                 if not param.requires_grad:
                     continue  # frozen weights
                 if len(param.shape) == 1 or name.endswith(".bias") or 'token' in name or name in skip_list:
